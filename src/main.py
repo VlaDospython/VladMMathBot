@@ -1,6 +1,8 @@
 import os
 import telebot
 
+print(help(telebot))
+
 # My name is VLAD_M_TELEGRAM_BOT_1_TOKEN
 token = os.environ['VLAD_M_TELEGRAM_BOT_1_TOKEN']
 bot = telebot.TeleBot(token, parse_mode='MarkdownV2')
@@ -9,10 +11,10 @@ welcome_text1, welcome_text2 = "Вітаю, це Telegram бот, який", "п
 help_text = "Бот надсилає питання та варіанти відповіді. У ботові тільки тести. Користувач повинен сам ввести *А Б В Г Д*. Бот перевіряє, чи відповідь правильна. Якщо відповідь правильна, бот вітає користувача з правильною відповіддю. "
 
 
-
-@bot.message_handler(commands=['start'])
+@bot.message_handler(func=lambda message: True)
 def command(message):
     text = f"{welcome_text1} *{welcome_text2}*"
+    print(type(text))
     bot.send_message(message.chat.id, text)
 
 
